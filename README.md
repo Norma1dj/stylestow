@@ -2,8 +2,8 @@
 
 Team:
 
-* Person 1 - Which microservice?
-* Person 2 - Which microservice?
+* Long Guan - Hats microservices
+* Drew Norman-Meadows - Hat microservice?
 
 ## Design
 
