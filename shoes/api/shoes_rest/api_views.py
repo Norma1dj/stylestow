@@ -7,15 +7,26 @@ import json
 
 class ShoeListEncoder(ModelEncoder):
     model = Shoe
-    properties = '__all__'
+    properties = [
+        "manufacturer",
+        "model_name",
+        "color",
+        "picture_url",
+        "bin_location",
+    ]
+
+
 
 
 
 @require_http_methods(["GET", "POST"])
-def api_list_shoes(request):
+def api_list_shoes(request, pk=None):
  
     if request.method == "GET":
-        shoes = Shoe.objects.all()
+        if pk == None:
+            shoes = Shoe.objects.all()
+        else:
+            shoes = Shoe.objects.filter(id=pk)
         return JsonResponse(
             {"shoes": shoes},
             encoder=ShoeListEncoder,
