@@ -11,6 +11,7 @@ class HatListEncoder(ModelEncoder):
         "color",
         "picture_url",
         "location",
+        "fabric",
     ]
 
 
