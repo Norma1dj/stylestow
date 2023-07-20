@@ -83,6 +83,13 @@ function CreateShoeForm() {
         }
     }
 
+
+    useEffect(()  => { 
+        fetchData();
+      }, []);
+
+
+
     return (
         <div className="container">
             <div className="row">
@@ -109,10 +116,10 @@ function CreateShoeForm() {
                             <div className="mb-3">
                                 <select onChange={handleBinLocationChange} required value={bin_location} id="bin_location" name="bin_location" className="form-select">
                                     <option value="">Choose a bin</option>
-                                    {shoes.map((shoe) => {
+                                    {shoes.map((bin_location) => {
                                     return (
-                                        <option key={shoe.id} value={shoe.href}>
-                                            {shoe.id}
+                                        <option key={bin_location} value={bin_location.href}>
+                                            {bin_location.id}
                                         </option>
                                     );
                                 })}
@@ -132,11 +139,6 @@ function CreateShoeForm() {
 
 
 
-
-
-      useEffect(()  => { 
-        fetchData();
-      }, []);
 
 
 
