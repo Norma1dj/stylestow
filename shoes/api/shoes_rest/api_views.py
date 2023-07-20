@@ -36,7 +36,7 @@ def api_list_shoes(request, pk=None):
         )
     else:
         content = json.loads(request.body)
-        photo = get_shoe_photo(content["color"], content["manufacturer"], content["model"])
+        photo = get_shoe_photo(content["color"], content["manufacturer"], content["model_name"])
         content.update(photo)
         shoe = Shoe.objects.create(**content)
         # Your POST handling logic here
