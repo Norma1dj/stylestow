@@ -2,6 +2,7 @@ from .models import Shoe
 from django.views.decorators.http import require_http_methods
 from common.json import ModelEncoder
 from django.http import JsonResponse
+from .acls import get_shoe_photo
 import json
 
 
@@ -35,6 +36,8 @@ def api_list_shoes(request, pk=None):
         )
     else:
         content = json.loads(request.body)
+        photo = get_shoe_photo(content["color"], content["fabric"])
+        content.update(photo)
         shoe = Shoe.objects.create(**content)
         # Your POST handling logic here
 

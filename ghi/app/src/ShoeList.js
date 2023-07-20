@@ -28,7 +28,7 @@ const ShoeList = () => {
         {shoes.map((shoe) => (
           <div key={shoe.id} className="col-md-4 mb-4">
             <div className="card">
-              <img src={shoe.picture_url} className="card-img-top" alt={`Shoe - ${shoe.model_name}`} />
+              <img src={shoe.picture_url} className="card-img-top" alt={` ${shoe.model_name}`} />
               <div className="card-body">
                 <h5 className="card-title">{shoe.model_name}</h5>
                 <p className="card-text">
