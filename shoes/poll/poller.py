@@ -4,6 +4,7 @@ import sys
 import time
 import json
 import requests
+from shoes_rest.models import Shoe
 
 sys.path.append("")
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "shoes_project.settings")

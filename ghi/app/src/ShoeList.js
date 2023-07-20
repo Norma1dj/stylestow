@@ -33,8 +33,7 @@ const ShoeList = () => {
                 <h5 className="card-title">{shoe.model_name}</h5>
                 <p className="card-text">
                    {shoe.manufacturer}
-                  <br />
-                   {shoe.color}
+                  
                   
                 </p>
               </div>
