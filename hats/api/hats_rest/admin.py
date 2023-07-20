@@ -19,4 +19,5 @@ class HatAdmin(admin.ModelAdmin):
         "picture_url",
         "location",
         "fabric",
+        "id",
     )

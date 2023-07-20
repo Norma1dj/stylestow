@@ -3,6 +3,7 @@ import MainPage from './MainPage';
 import Nav from './Nav';
 import HatList from './HatList';
 import ShoeList from './ShoeList';
+import HatForm from './HatForm';
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
           <Route path="/" element={<MainPage />} />
           <Route path="/hats" element={<HatList />} />
           <Route path="/shoes" element={<ShoeList />} />
-          
+          <Route path="/hats/new" element={<HatForm />} />
         </Routes>
       </div>
     </BrowserRouter>

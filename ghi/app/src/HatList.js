@@ -18,27 +18,49 @@ function HatList(props) {
         }
     }
 
+    const deleteHats = async(hatId) => {
+        const url = 'http://localhost:8090/api/hats/' + hatId;
+        const fetchConfig = {
+            method: "delete",
+        }
+        const response = await fetch(url, fetchConfig);
+        if (response.ok) {
+            const deleteStatus = await response.json();
+            console.log(deleteStatus);
+            fetchHats();
+        }
+    }
+
     return (
-        <div>
-            {hats.map(hat => {
-                return (
-                    <div key={hat.name} className="card mb-3 shadow">
-                        <img src={hat.picture_url} className="card-img-top" />
-                        <div className="card-body">
-                            <h5 className="card-title">{hat.name}</h5>
-                            <h6 className="card-subtitle mb-2 text-muted">
-                                Fabric: {hat.fabric}
-                            </h6>
-                            <h6 className="card-subtitle mb-2 text-muted">
-                                Color: {hat.color}
-                            </h6>
+        <div className="container mt-4">
+            <h4>Inventory of Hats</h4>
+            <div className="d-flex flex-wrap">
+                {hats.map(hat => {
+                    return (
+                        <div key={hat.name} className="card mb-3 shadow w-25 h-25">
+                            <img src={hat.picture_url} className="card-img-top" />
+                            <div className="card-body">
+                                <h5 className="card-title">{hat.name}</h5>
+                                <h6 className="card-subtitle mb-2 text-muted">
+                                    Fabric: {hat.fabric}
+                                </h6>
+                                <h6 className="card-subtitle mb-2 text-muted">
+                                    Color: {hat.color}
+                                </h6>
+                            </div>
+                            <div className="card-footer">
+                                <div><b>Wardrobe Location:</b></div>
+                                <div>{hat.location.closet_name}</div>
+                                <div>Section {hat.location.section_number}</div>
+                                <div>Shelf {hat.location.shelf_number}</div>
+                            </div>
+                            <div className="card-footer">
+                                <button type="button" className="btn btn-dark" onClick={() => deleteHats(hat.id)}>Delete Hat</button>
+                            </div>
                         </div>
-                        <div className="card-footer">
-                            {hat.location}
-                        </div>
-                    </div>
-                )
-            })}
+                    )
+                })}
+            </div>
         </div>
     )
 }
