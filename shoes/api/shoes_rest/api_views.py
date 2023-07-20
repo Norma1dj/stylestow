@@ -13,6 +13,7 @@ class ShoeListEncoder(ModelEncoder):
         "color",
         "picture_url",
         "bin_location",
+        "id",
     ]
 
 

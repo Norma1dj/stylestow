@@ -11,8 +11,9 @@ function App() {
       <div className="container">
         <Routes>
           <Route path="/" element={<MainPage />} />
-          <Route path="/hats" element={<HatList />} />
-       
+          <Route path="/" element={<HatList />} />
+          <Route path="/" element={<ShoeList />} />
+          
         </Routes>
       </div>
     </BrowserRouter>
