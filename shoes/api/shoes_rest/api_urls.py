@@ -4,5 +4,6 @@ from .api_views import api_list_shoes
 
 urlpatterns = [
     path("shoes/", api_list_shoes, name="api_list_shoes"),
+    path("shoes/<id:pk>", api_list_shoes, name="api_list_shoes"),
     
 ]
