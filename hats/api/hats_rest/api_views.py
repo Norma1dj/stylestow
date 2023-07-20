@@ -3,6 +3,8 @@ from django.views.decorators.http import require_http_methods
 from common.json import ModelEncoder
 from django.http import JsonResponse
 import json
+from .acls import get_photo
+
 
 class HatListEncoder(ModelEncoder):
     model = Hat
@@ -28,6 +30,8 @@ def api_list_hat(request, pk=None):
         )
     else:
         content = json.loads(request.body)
+        photo = get_photo(content["color"], content["fabric"])
+        content.update(photo)
         hat = Hat.objects.create(**content)
         return JsonResponse(
             hat,
