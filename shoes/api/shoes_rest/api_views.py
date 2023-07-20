@@ -1,4 +1,4 @@
-from .models import Shoe
+from .models import Shoe, BinVO
 from django.views.decorators.http import require_http_methods
 from common.json import ModelEncoder
 from django.http import JsonResponse
@@ -13,9 +13,16 @@ class ShoeListEncoder(ModelEncoder):
         "model_name",
         "color",
         "picture_url",
-        "bin_location",
         "id",
     ]
+    def get_extra_data(self, o):
+        return {"bin_location":
+            {
+                'closet_name': o.bin_location.closet_name,
+                'bin_number': o.bin_location.bin_number,
+                'bin_size': o.bin_location.bin_size,
+                'import_href': o.bin_location.import_href,
+                }}
 
 
 @require_http_methods(["GET", "POST"])
@@ -33,6 +40,12 @@ def api_list_shoes(request, pk=None):
         )
     else:
         content = json.loads(request.body)
+
+       
+        bin_location_href = content["bin_location"]
+        bin_location = BinVO.objects.get(import_href=bin_location_href)
+        content["bin_location"] = bin_location
+ 
         
         photo = get_shoe_photo(content["color"], content["manufacturer"], content["model_name"])
         content.update(photo)

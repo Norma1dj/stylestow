@@ -17,10 +17,9 @@ class Shoe(models.Model):
     picture_url = models.URLField(null=True)
     bin_location = models.ForeignKey(
         BinVO,
-        related_name="shoe",
+        related_name="shoes",
         on_delete=models.CASCADE,
     )
 
     def __str__(self):
         return f"{self.manufacturer} {self.model_name}"
-    2

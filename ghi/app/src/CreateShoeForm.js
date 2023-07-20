@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 function CreateShoeForm() {
-    const [BinVO, setShoes] = useState([]);
+    const [bins, setBins] = useState([]);
     const [manufacturer, setManufacturer] = useState('');
     const [model_name, setModel] = useState('');
     const [color, setColor] = useState('');
@@ -62,7 +62,7 @@ function CreateShoeForm() {
         setModel('');
         setColor('');
         setBin('');
-        setShoes([]);
+      
         
 
         }
@@ -76,7 +76,7 @@ function CreateShoeForm() {
     
         if (response.ok) {
           const data = await response.json();
-          setShoes(data.bins);
+          setBins(data.bins);
           console.log(data.bins)
           
           
@@ -116,10 +116,10 @@ function CreateShoeForm() {
                             <div className="mb-3">
                                 <select onChange={handleBinLocationChange} required value={bin_location} id="bin_location" name="bin_location" className="form-select">
                                     <option value="">Choose a bin</option>
-                                    {BinVO.map((BinVO) => {
+                                    {bins.map((bin_location) => {
                                     return (
-                                        <option key={BinVO.id} value={BinVO.id}>
-                                            {BinVO.id}
+                                        <option key={bin_location.href} value={bin_location.href}>
+                                            {bin_location.closet_name}
                                         </option>
                                     );
                                 })}
@@ -147,3 +147,4 @@ function CreateShoeForm() {
 }
 
 export default CreateShoeForm
+
