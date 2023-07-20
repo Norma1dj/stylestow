@@ -18,9 +18,6 @@ class ShoeListEncoder(ModelEncoder):
     ]
 
 
-
-
-
 @require_http_methods(["GET", "POST"])
 def api_list_shoes(request, pk=None):
  
