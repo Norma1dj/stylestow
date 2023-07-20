@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 function CreateShoeForm() {
-    const [shoes, setShoes] = useState([]);
+    const [BinVO, setShoes] = useState([]);
     const [manufacturer, setManufacturer] = useState('');
     const [model_name, setModel] = useState('');
     const [color, setColor] = useState('');
@@ -116,10 +116,10 @@ function CreateShoeForm() {
                             <div className="mb-3">
                                 <select onChange={handleBinLocationChange} required value={bin_location} id="bin_location" name="bin_location" className="form-select">
                                     <option value="">Choose a bin</option>
-                                    {shoes.map((bin_location) => {
+                                    {BinVO.map((BinVO) => {
                                     return (
-                                        <option key={bin_location} value={bin_location.href}>
-                                            {bin_location.id}
+                                        <option key={BinVO.id} value={BinVO.id}>
+                                            {BinVO.id}
                                         </option>
                                     );
                                 })}
