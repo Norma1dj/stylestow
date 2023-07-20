@@ -4,12 +4,12 @@ import sys
 import time
 import json
 import requests
-from api.shoes_rest.models import BinVO
+
 
 sys.path.append("")
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "shoes_project.settings")
 django.setup()
-
+from shoes_rest.models import BinVO
 # Import models from hats_rest, here.
 # from shoes_rest.models import Something
 

@@ -1,6 +1,14 @@
 from django.db import models
 
 # Create your models here.
+
+
+class BinVO(models.Model):
+    closet_name = models.CharField(max_length=100)
+    bin_number = models.PositiveSmallIntegerField()
+    bin_size = models.PositiveSmallIntegerField()
+
+
 class Shoe(models.Model):
     manufacturer = models.CharField(max_length=100)
     model_name = models.CharField(max_length=100)
@@ -11,8 +19,3 @@ class Shoe(models.Model):
     def __str__(self):
         return f"{self.manufacturer} {self.model_name}"
     
-
-class BinVO(models.Model):
-    closet_name = models.CharField(max_length=100)
-    bin_number = models.PositiveSmallIntegerField()
-    bin_size = models.PositiveSmallIntegerField()
