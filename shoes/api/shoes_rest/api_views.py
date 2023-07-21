@@ -25,7 +25,7 @@ class ShoeListEncoder(ModelEncoder):
                 }}
 
 
-@require_http_methods(["GET", "POST"])
+@require_http_methods(["GET", "POST", "DELETE"])
 def api_list_shoes(request, pk=None):
  
     if request.method == "GET":
@@ -38,6 +38,11 @@ def api_list_shoes(request, pk=None):
             encoder=ShoeListEncoder,
             safe=False,
         )
+    
+    elif request.method == "DELETE":
+        count, _ = Shoe.objects.filter(id=pk).delete()
+        return JsonResponse({"deleted": count > 0})
+
     else:
         content = json.loads(request.body)
 

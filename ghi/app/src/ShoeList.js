@@ -21,6 +21,22 @@ const ShoeList = () => {
     }
   };
 
+  const handleDelete = async (shoeId) => {
+    try {
+      const response = await fetch(`http://localhost:8080/api/shoes/${shoeId}`, {
+        method: 'DELETE',
+      });
+      if (response.ok) {
+        // Remove the deleted shoe from the state
+        setShoes((prevShoes) => prevShoes.filter((shoe) => shoe.id !== shoeId));
+      } else {
+        console.error('Failed to delete shoe:', response.status);
+      }
+    } catch (error) {
+      console.error('Error deleting shoe:', error);
+    }
+  };
+
   return (
     <div className="container mt-4">
       <h1>Shoe List</h1>
@@ -33,9 +49,15 @@ const ShoeList = () => {
                 <h5 className="card-title">{shoe.model_name}</h5>
                 <p className="card-text">
                    {shoe.manufacturer}
-                  
-                  
+                                 
                 </p>
+                <button
+                  onClick={() => handleDelete(shoe.id)}
+                  className="btn btn-danger"
+                >
+                  Delete
+                </button>
+
               </div>
             </div>
           </div>
