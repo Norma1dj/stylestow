@@ -3,7 +3,7 @@
 Team:
 
 * Long Guan - Hats microservices
-* Drew Norman-Meadows - Hat microservice?
+* Drew Norman-Meadows - Shoes microservice
 
 ## Design
 
@@ -14,5 +14,4 @@ microservice, here.
 
 ## Hats microservice
 
-Explain your models and integration with the wardrobe
-microservice, here.
+The Hats microservice utilizes polling to fetch Location data from the wardrobe microservice. The Location data is then saved as LocationVO inside the Hats microservice and is used as location options to store the hats. The Hats microservice allows the user to store info for the hats.
