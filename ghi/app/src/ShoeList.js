@@ -46,7 +46,7 @@ const ShoeList = () => {
             <div className="card">
               <img src={shoe.picture_url} className="card-img-top" alt={` ${shoe.model_name}`} />
               <div className="card-body">
-                <h5 className="card-title">{shoe.model_name}</h5>
+                <h3 className="card-title">{shoe.model_name}</h3>
                 <p className="card-text">
                    {shoe.manufacturer}
                    <br />
@@ -56,7 +56,7 @@ const ShoeList = () => {
                 </p>
                 <button
                   onClick={() => handleDelete(shoe.id)}
-                  className="btn btn-danger"
+                  className="btn btn-dark"
                 >
                   Delete
                 </button>
