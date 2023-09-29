@@ -49,7 +49,10 @@ const ShoeList = () => {
                 <h5 className="card-title">{shoe.model_name}</h5>
                 <p className="card-text">
                    {shoe.manufacturer}
-                                 
+                   <br />
+                Closet: {shoe.bin_location.closet_name}
+                <br />
+                Bin Number: {shoe.bin_location.bin_number}
                 </p>
                 <button
                   onClick={() => handleDelete(shoe.id)}
